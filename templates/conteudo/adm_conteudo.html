@@ -1,0 +1,93 @@
+{% extends "comum/base.html" %}
+
+{% load static %}
+
+{% block title %} Administrativo {% endblock %}
+
+{% block stylesheets %}
+{% endblock stylesheets %}
+
+
+{% block content %}
+
+<div class="container pt-5" style="min-height: 85vh;">
+
+    <div class="text-center">
+        <h2 class="mt-5 mb-4">Matérias <a class="text-decoration-none" href="{% url 'nova-materia' %}"><i class="bi bi-plus-circle"></i></a></h2>
+    </div>
+
+    {% if messages %}
+        <br/>
+        {% for message in messages %}
+            <div class="alert {% if message.tags == 'success' %} alert-success {% else %} alert-danger {% endif %} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% if materias %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Título</th>
+                    <th scope="col">Subtítulo</th>
+                    <th scope="col">Slide</th>
+                    <th scope="col">Importante</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for materia in materias %}
+                    <tr>
+                        <td>{{ materia.titulo|truncatechars:30 }}</td>
+                        <td>{{ materia.subtitulo|truncatechars:50 }}</td>
+                        <td class="text-center">{% if materia.slide %}<i class="bi bi-check-lg"></i>{% endif %}</td>
+                        <td class="text-center">{% if materia.importante %}<i class="bi bi-check-lg"></i>{% endif %}</td>
+                        <td>
+                            <button type="button" class="btn btn-success btn-sm" onclick="window.location.href='{% url 'materia' materia.id %}'">
+                                <i class="bi bi-folder2-open"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-warning btn-sm" onclick="window.location.href='{% url 'editar-materia' materia.id %}'">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            
+                            <!-- Modal de Confirmação -->
+                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#confirmacaoModal{{ materia.id }}">
+                                <i class="bi bi-trash"></i>
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="confirmacaoModal{{ materia.id }}" tabindex="-1" aria-labelledby="confirmacaoModalLabel{{ materia.id }}" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="confirmacaoModalLabel{{ materia.id }}">Confirmação</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Tem certeza que deseja apagar este item?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                            <a href="{% url 'apagar-materia' materia.id %}" class="btn btn-danger btn-sm"> Apagar </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fim do Modal -->
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="text-center">
+            <h4 class="mt-5 mb-4">Nenhum matéria salva</h4>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}
+

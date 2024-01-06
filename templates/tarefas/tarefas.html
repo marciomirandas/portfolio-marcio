@@ -1,0 +1,140 @@
+{% extends "comum/base.html" %}
+
+{% load static %}
+{% load tz %}
+
+{% block title %} Tarefas {% endblock %}
+
+{% block stylesheets %}
+{% endblock stylesheets %}
+
+
+{% block content %}
+    
+    <div class="container pt-5" style="min-height: 85%;">
+
+        {% if messages %}
+            <br/>
+            {% for message in messages %}
+                <div class="alert {% if message.tags == 'success' %} alert-success {% else %} alert-danger {% endif %} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="text-center">
+            <h2 class="mt-5 mb-4">Tarefas <a class="text-decoration-none" href="{% url 'nova-tarefa' %}"><i class="bi bi-plus-circle"></i></a></h2>
+        </div>
+
+        {% if tarefas %}
+        <form class="mb-4" method="post">
+            {% csrf_token %}
+
+            <div class="row">
+                <div class="col-md-7">
+                    <input type="text" class="form-control" placeholder="Pesquisar" name="pesquisa" value="{{valor}}">
+                </div>
+                <div class="col-md-4">
+                    <select class="form-select" id="opcoes" name="opcao">
+                        <option value="">---------</option>
+                        <option value="pendente">Pendentes</option>
+                        <option value="iniciada">Iniciadas</option>
+                        <option value="concluidas">Concluídas</option>
+                    </select>
+                </div>
+                <div class="col-md-1">
+                    <button type="submit" class="btn btn-primary mb-2">Buscar</button>
+                </div>
+            </div>
+        </form>
+
+        
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% now "Y-m-d" as hoje %}
+                    {% for tarefa in tarefas %}
+                        <tr {% if tarefa.vencimento|date:"Y-m-d" < hoje and tarefa.status != 'concluida' %}class="table-danger"{% endif %}>
+                            <td>{{ tarefa.nome|truncatechars:40 }}</td>
+                            <td>{{ tarefa.descricao|truncatechars:50 }}</td>
+                            <td>{{ tarefa.vencimento }}</td>
+                            <td>{{ tarefa.get_status_display}}</td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-sm" onclick="window.location.href='{% url 'ver-tarefa' tarefa.id %}'">
+                                    <i class="bi bi-folder2-open"></i> Ver
+                                </button>
+
+                                <button type="button" class="btn btn-warning btn-sm" onclick="window.location.href='{% url 'editar-tarefa' tarefa.id %}'">
+                                    <i class="bi bi-pencil"></i> Editar
+                                </button>
+                                
+                                <!-- Modal de Confirmação -->
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#confirmacaoModal{{ tarefa.id }}">
+                                    <i class="bi bi-trash"></i> Apagar
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="confirmacaoModal{{ tarefa.id }}" tabindex="-1" aria-labelledby="confirmacaoModalLabel{{ tarefa.id }}" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="confirmacaoModalLabel{{ tarefa.id }}">Confirmação</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Tem certeza que deseja apagar este item?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <a href="{% url 'apagar-tarefa' tarefa.id %}" class="btn btn-danger btn-sm"> Apagar </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Fim do Modal -->
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="text-center">
+                <span class="step-links">
+                    {% if tarefas.has_previous %}
+                        <a href="?page={{ tarefas.previous_page_number }}"><i class="fa fa-arrow-left"></i></a>
+                    {% endif %}
+                    
+                    {% if tarefas.paginator.num_pages != 1 %}
+                    <span class="current">
+                        {{ tarefas.number }} de {{ tarefas.paginator.num_pages }}
+                    </span>
+                    {% endif %}
+                
+                    {% if tarefas.has_next %}
+                        <a href="?page={{ tarefas.next_page_number }}"><i class="fa fa-arrow-right"></i></a>
+                    {% endif %}
+                </span>
+            </div>
+        {% else %}
+            <div class="text-center">
+                <h4 class="mt-5 mb-4">Nenhum tarefa salva</h4>
+            </div>
+        {% endif %}
+
+        
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock javascripts %}

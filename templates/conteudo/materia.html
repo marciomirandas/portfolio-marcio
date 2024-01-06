@@ -1,0 +1,19 @@
+{% extends "conteudo/site_base.html" %}
+
+{% load static %}
+
+{% block title %} {{ materia.titulo }} {% endblock %}
+
+{% block conteudo %}
+
+
+    <div class="text-center bg-secondary text-white">
+        <h2 class="pt-5 pb-3">{{ materia.titulo }}</h2>
+        <h4 class="pb-5">{{ materia.subtitulo }}</h4>
+    </div>
+
+    <img src="{{ materia.imagem.thumb.url }}" class="d-block w-100" alt="...">
+    
+    <p class="text-justify mt-4 mb-4">{{ materia.texto }}</p>
+
+{% endblock %}

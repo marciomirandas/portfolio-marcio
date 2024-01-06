@@ -1,0 +1,61 @@
+{% extends "comum/base.html" %}
+
+{% load static %}
+{% load tz %}
+
+{% block title %} Recuperar Senha {% endblock %}
+
+{% block stylesheets %}
+    <link href="{% static 'usuarios/css/style.css' %}" rel="stylesheet">
+{% endblock stylesheets %}
+
+
+{% block content %}
+
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card pb-3">
+			<div class="card-header">
+				<h3 class="mt-3">Recuperar Senha</h3>
+			</div>
+			<div class="card-body">
+				<form method="post">
+					{% csrf_token %}
+					<div class="input-group form-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text d-flex justify-content-center align-items-center"><i class="bi bi-envelope-fill"></i></span>
+						</div>
+						<input type="email" class="form-control" placeholder="Email" name="email" required>
+					</div>
+					
+					<div class="form-group d-flex justify-content-center align-items-center">
+						<input type="submit" value="Enviar" class="btn float-right login_btn">
+					</div>
+				</form>
+			</div>
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					Lembrou a senha?<a href="{% url 'login' %}">Voltar</a>
+				</div>
+				
+
+				{% if messages %}
+					<br/>
+					{% for message in messages %}
+						<div class="alert {% if message.tags == 'success' %} alert-success {% else %} alert-danger {% endif %} alert-dismissible fade show" role="alert">
+							{{ message }}
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+					{% endfor %}
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{% static 'usuarios/js/script.js' %}"></script>
+{% endblock javascripts %}

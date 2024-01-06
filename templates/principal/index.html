@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+{% extends "comum/base.html" %}
+
+{% load static %}
+
+{% block title %} Home {% endblock %}
+
+{% block stylesheets %}
+{% endblock stylesheets %}
+
+
+{% block content %}
+
+  <!-- ======= Hero Section ======= -->
+  <div id="hero" class="hero route bg-image" style="background-image: url(static/principal/img/capa.jpg)">
+    <div class="overlay-itro"></div>
+    <div class="hero-content display-table">
+      <div class="table-cell">
+        <div class="container">
+          <h1 class="hero-title mb-3">Márcio Miranda</h1>
+          <h2 class="sub-title mb-3">Desenvolvedor</h2>
+          <p class="hero-subtitle"><span class="typed" data-typed-items="Python, Django, Django REST Framework"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Hero Section -->
+
+  <main id="main">
+
+    
+      {% if messages %}
+        <div class="container pt-5">
+          <br/>
+          {% for message in messages %}
+              <div class="alert {% if message.tags == 'success' %} alert-success {% else %} alert-danger {% endif %} alert-dismissible fade show" role="alert">
+                  {{ message }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about-mf sect-pt4 route">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="box-shadow-full">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="row">
+                    <div class="col-sm-6 col-md-5">
+                      <div class="about-img">
+                        <img src="{% static 'principal/img/perfil.jpg' %}" class="img-fluid rounded b-shadow-a perfil" alt="">
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-7">
+                      <div class="about-info">
+                        <p><span class="title-s">Márcio Miranda</span></p>
+                        <p><span>Desenvolvedor</span></p>
+                        <p><span>marciojmirandas@gmail.com</span></p>
+                        <p><span>(41) 99836 - 5769</span></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="skill-mf">
+                    <p class="title-s">Principais Ferramentas</p>
+                    <span>HTML</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <span>CSS</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <span>Javascript</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <span>Python</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <span>Django</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <span>Django REST Framework</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <span>PHP</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <span>Banco de Dados</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <span>React JS</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="about-me pt-4 pt-md-0">
+                    <div class="title-box-2">
+                      <h5 class="title-left">
+                        Sobre
+                      </h5>
+                    </div>
+                    <p class="lead" style="text-align: justify">
+                      Formado em Engenharia Ambiental e Sanitária pela Universidade Federal de Sergipe, onde obtive minha 
+                      primeira experiência com as linguagens C e Java. Retornando ao ensino médio, dei os primeiros passos 
+                      no universo do desenvolvimento ao cursar Web Design, estudando HTML, CSS e Javascript. 
+                      Mais tarde, aprofundei meus conhecimentos de maneira autodidata em PHP e em bancos de dados.
+                    </p>
+                    <p class="lead" style="text-align: justify">
+                      Há três anos, dei início a projetos de automação web em Python para uma empresa, enfrentando o desafio de lançar mais de 20 mil dados em um sistema. Desde então, tenho focado meu desenvolvimento nessa linguagem, realizando cursos especializados em Python, Django e Django Rest para aprimorar minhas habilidades.
+                    </p>
+                    <p class="lead" style="text-align: justify">
+                      Ao longo dos últimos anos, tenho atuado como freelancer, desenvolvendo sites, sistemas, automações web e desktop, além de me envolver em tarefas como manipulação de arquivos e análise de dados. Minha experiência diversificada e a busca contínua por atualização me capacitam a enfrentar desafios complexos e entregar soluções inovadoras.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End About Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services-mf pt-5 route">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="title-box text-center">
+              <h3 class="title-a">
+                Serviços
+              </h3>
+              <div class="line-mf"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="service-box">
+              <div class="service-ico">
+                <span class="ico-circle"><i class="bi bi-laptop"></i></span>
+              </div>
+              <div class="service-content">
+                <h2 class="s-title">Desenvolvimento Web</h2>
+                <p class="s-description text-center">
+                  Django e Django Rest Framework oferecem uma combinação eficiente para o desenvolvimento web, proporcionando estrutura completa e simplificando a criação de aplicativos web e APIs REST escaláveis.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="service-box">
+              <div class="service-ico">
+                <span class="ico-circle"><i class="bi bi-card-checklist"></i></span>
+              </div>
+              <div class="service-content">
+                <h2 class="s-title">Automação de Processos</h2>
+                <p class="s-description text-center">
+                  RPA com Selenium e PyAutoGUI é uma combinação eficaz para automação de processos. uma para automação web, outra para tarefas desktop. Juntos, oferecem uma solução para simplificar fluxos de trabalho.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="service-box">
+              <div class="service-ico">
+                <span class="ico-circle"><i class="bi bi-card-text"></i></span>
+              </div>
+              <div class="service-content">
+                <h2 class="s-title">Manipulação de Arquivos</h2>
+                <p class="s-description text-center">
+                  Com Python, a manipulação de arquivos é simplificada, permitindo a realização de manipulação de dados de maneira eficiente. O uso de funções e módulos nativos oferece versatilidade na gestão de arquivos.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Counter Section ======= -->
+    <div class="section-counter paralax-mf bg-image" style="background-image: url(static/principal/img/counters-bg.jpg)">
+      <div class="overlay-mf"></div>
+      <div class="container position-relative">
+        <div class="row">
+          <div class="col-sm-3 col-lg-3">
+            <div class="counter-box counter-box pt-4 pt-md-0">
+              <div class="counter-ico">
+                <span class="ico-circle"><i class="bi bi-check"></i></span>
+              </div>
+              <div class="counter-num">
+                <p data-purecounter-start="0" data-purecounter-end="27" data-purecounter-duration="2" class="counter purecounter"></p>
+                <span class="counter-text">PROJETOS ENTREGUES</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 col-lg-3">
+            <div class="counter-box pt-4 pt-md-0">
+              <div class="counter-ico">
+                <span class="ico-circle"><i class="bi bi-journal-richtext"></i></span>
+              </div>
+              <div class="counter-num">
+                <p data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="2" class="counter purecounter"></p>
+                <span class="counter-text">ANOS DE EXPERIÊNCIA</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 col-lg-3">
+            <div class="counter-box pt-4 pt-md-0">
+              <div class="counter-ico">
+                <span class="ico-circle"><i class="bi bi-people"></i></span>
+              </div>
+              <div class="counter-num">
+                <p data-purecounter-start="0" data-purecounter-end="16" data-purecounter-duration="2" class="counter purecounter"></p>
+                <span class="counter-text">CLIENTES SATISFEITOS</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 col-lg-3">
+            <div class="counter-box pt-4 pt-md-0">
+              <div class="counter-ico">
+                <span class="ico-circle"><i class="bi bi-award"></i></span>
+              </div>
+              <div class="counter-num">
+                <p data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="2" class="counter purecounter"></p>
+                <span class="counter-text">CURSOS REALIZADOS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- End Counter Section -->
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="work" class="portfolio-mf sect-pt4 route">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="title-box text-center">
+              <h3 class="title-a">
+                Projetos
+              </h3>
+              <div class="line-mf"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+
+          <div class="col-md-4">
+            <div class="work-box">
+                <div class="work-img">
+                  <img src="{% static 'principal/img/autenticacao.jpg' %}" alt="" class="img-fluid">
+                </div>
+              </a>
+              <div class="work-content">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <h2 class="w-title">Sistema de Autenticação</h2>
+                    <div class="w-more" style="text-align: justify">
+                      <p>O sistema de autenticação foi melhorado com modificações na classe de Usuário para incluir campos 
+                        adicionais, signals para eventos pós-salvar e roles permissions para um controle preciso das permissões. 
+                        Isso fortalece a segurança e enriquece a experiência do usuário no processo de login, registro e 
+                        recuperação de senha.</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 d-flex justify-content-center">
+                    <div class="w-like">
+                      <a href="{% url 'login' %}"> <span class="bi bi-plus-circle"></span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="work-box">
+                <div class="work-img">
+                  <img src="{% static 'principal/img/tarefas.jpg' %}" alt="" class="img-fluid">
+                </div>
+              </a>
+              <div class="work-content">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <h2 class="w-title">Lista de Tarefas</h2>
+                    <div class="w-more" style="text-align: justify">
+                      <p>Um projeto Django implementa um sistema CRUD com funcionalidades adicionais, incluindo pesquisa por 
+                        título, filtragem por status, paginação e mensagens de sucesso/erro. A robustez é garantida com a 
+                        inclusão de testes unitários para validar o funcionamento correto das operações.</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 d-flex justify-content-center">
+                    <div class="w-like">
+                      <a href="{% url 'tarefas' %}"> <span class="bi bi-plus-circle"></span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="work-box">
+                <div class="work-img">
+                  <img src="{% static 'principal/img/api.jpg' %}" alt="" class="img-fluid">
+                </div>
+              </a>
+              <div class="work-content">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <h2 class="w-title">API RESTful</h2>
+                    <div class="w-more" style="text-align: justify">
+                      <p>Desenvolvida com Django Rest Framework, essa API avançada oferece permissões customizadas, validação 
+                        de dados, suporte a relacionamentos complexos, rotas organizadas, paginação eficiente, limitação de 
+                        requisições, autenticação por token e testes unitários.<br><br></p>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 d-flex justify-content-center">
+                    <div class="w-like">
+                      <a href="{% url 'curso-list' %}"> <span class="bi bi-plus-circle"></span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="work-box">
+                <div class="work-img">
+                  <img src="{% static 'principal/img/conteudo.jpg' %}" alt="" class="img-fluid">
+                </div>
+              </a>
+              <div class="work-content">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <h2 class="w-title">Gerenciamento de Conteúdo</h2>
+                    <div class="w-more" style="text-align: justify">
+                      <p>Sistema de gerenciamento de conteúdo eficiente e intuitivo, projetado para otimizar a gestão de 
+                        publicações em seu site. Com recursos de publicação, edição e organização simplificados, oferece uma 
+                        solução flexível para impulsionar seu fluxo de trabalho editorial.</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 d-flex justify-content-center">
+                    <div class="w-like">
+                      <a href="{% url 'conteudo-site' %}"> <span class="bi bi-plus-circle"></span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="work-box">
+                <div class="work-img">
+                  <img src="{% static 'principal/img/whatsapp.jpg' %}" alt="" class="img-fluid">
+                </div>
+              </a>
+              <div class="work-content">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <h2 class="w-title">Automação WhatsApp Web</h2>
+                    <div class="w-more" style="text-align: justify">
+                      <p>Uma automação web que monitora continuamente as mensagens recebidas no WhatsApp Web. Ela identifica a 
+                        presença de CPFs nas mensagens, e ao detectar um, automaticamente abre o site da Caixa Econômica Federal. 
+                        Em seguida, navega até a página de consulta, realiza a pesquisa pelo CPF em questão, captura os 
+                        resultados e os envia de volta para a conversa em formato de PDF ou texto. 
+                        Uma verdadeira assistência digital ágil e personalizável!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="work-box">
+                <div class="work-img">
+                  <img src="{% static 'principal/img/analise-sentimentos.jpg' %}" alt="" class="img-fluid">
+                </div>
+              </a>
+              <div class="work-content">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <h2 class="w-title">Análise de Sentimentos</h2>
+                    <div class="w-more" style="text-align: justify">
+                      <p>Neste projeto, foi utilizada a API do Twitter para coletar tweets sobre vacinação no Brasil, filtrando 
+                        por palavras-chave específicas em um período determinado. Os dados foram armazenados e analisados com 
+                        bibliotecas Python, incluindo uma análise de sentimentos por meio de aprendizado de máquina. 
+                        Os resultados foram apresentados no Power BI, oferecendo insights valiosos sobre as discussões 
+                        relacionadas à vacinação.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- End Portfolio Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(static/principal/img/overlay-bg.jpg)">
+      <div class="overlay-mf"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="contact-mf">
+              <div id="contact" class="box-shadow-full">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="title-box-2">
+                      <h5 class="title-left">
+                        Enviar Mensagem
+                      </h5>
+                    </div>
+                    <div>
+                      <form method="post" role="form">
+                        {% csrf_token %}
+                        <div class="row">
+                          <div class="col-md-12 mb-3">
+                            <div class="form-group">
+                              <input type="text" name="name" class="form-control" id="name" placeholder="Nome" required>
+                            </div>
+                          </div>
+                          <div class="col-md-12 mb-3">
+                            <div class="form-group">
+                              <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+                            </div>
+                          </div>
+                          <div class="col-md-12 mb-3">
+                            <div class="form-group">
+                              <input type="text" class="form-control" name="subject" id="subject" placeholder="Assunto" required>
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <textarea class="form-control" name="message" rows="5" placeholder="Mensagem" required></textarea>
+                            </div>
+                          </div>
+                          <div class="col-md-12 text-center my-3">
+                          </div>
+                          <div class="col-md-12 text-center">
+                            <button type="submit" class="button button-a button-big button-rouded">Enviar Mensagem</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="title-box-2 pt-4 pt-md-0">
+                      <h5 class="title-left">
+                        Entre em Contato
+                      </h5>
+                    </div>
+                    <div class="more-info">
+                      <p class="lead">
+                        Ficou com alguma dúvida ou gostaria de discutir um projeto? Estou aqui para ajudar! 
+                        Sinta-se à vontade para entrar em contato comigo. Estou ansioso para ouvir de 
+                        você e colaborar na realização das suas ideias.
+                      </p>
+                      <ul class="list-ico">
+                        <li><span class="bi bi-geo-alt"></span> Curitiba - Paraná</li>
+                        <li><span class="bi bi-phone"></span> (41) 99836 - 5769</li>
+                        <li><span class="bi bi-envelope"></span> marciojmirandas@gmail.com</li>
+                      </ul>
+                    </div>
+                    <div class="socials">
+                      <ul>
+                        <li><a href="https://github.com/marciomirandas" target="_blank"><span class="ico-circle"><i class="bi bi-github"></i>  </span></a></li>
+                        <li><a href="https://www.linkedin.com/in/marciojmirandas/ " target="_blank"><span class="ico-circle"><i class="bi bi-linkedin"></i></span></a></li>
+                        <li><a href="https://instagram.com/marciomirandas" target="_blank"><span class="ico-circle"><i class="bi bi-instagram"></i></span></a></li>
+                        <li><a href="https://www.facebook.com/marciomirandas/" target="_blank"><span class="ico-circle"><i class="bi bi-facebook"></i></span></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  
+  {% endblock %}
+
+  {% block javascripts %}
+  {% endblock javascripts %}

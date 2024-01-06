@@ -1,0 +1,60 @@
+# .gitignore para projetos Django
+
+# Ignorar arquivos bytecode do Python
+__pycache__/
+*.pyc
+
+# Ignorar o ambiente virtual
+venv/
+venv3/
+
+# Ignorar o diretório de migrações do Django
+**/migrations/*
+!**/migrations/__init__.py
+
+# Ignorar o arquivo de configurações locais
+local_settings.py
+
+# Ignorar a pasta de mídia
+media/
+
+# Ignorar a pasta de arquivos estáticos
+#static/
+
+# Ignorar o arquivo do banco de dados SQLite
+db.sqlite3
+
+# Ignorar o arquivo de variáveis de ambiente
+.env
+
+# Ignorar o relatório de cobertura
+htmlcov/
+
+# Ignorar arquivos específicos de IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+
+# Ignorar logs e arquivos temporários
+*.log
+*.swp
+*.swo
+*.tmp
+
+# Ignorar arquivos compilados
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorar o banco de dados de teste
+test_db.sqlite3
+
+# Ignorar arquivos do sistema
+.DS_Store
+Thumbs.db
+```
+
+# Ignorar arquivos de teste unitário
+.coverage
+.coveragerc

@@ -1,0 +1,82 @@
+{% extends "comum/base.html" %}
+
+{% load static %}
+
+{% block title %} Tarefa {{tarefa.id}} {% endblock %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+
+{% block content %}
+    <div class="container pt-5" style="min-height: 85%;">
+
+        {% if messages %}
+            <br/>
+            {% for message in messages %}
+                <div class="alert {% if message.tags == 'success' %} alert-success {% else %} alert-danger {% endif %} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="text-center">
+            <h2 class="mt-5 mb-4">Tarefa #{{tarefa.id}}</h2>
+        </div>
+
+        <table class="table">
+            
+            <tbody>
+                <tr>
+                    <th>Nome</th>
+                    <td>{{ tarefa.nome }}</td>
+                </tr>
+                <tr>
+                    <th>Descrição</th>
+                    <td>{{ tarefa.descricao }}</td>
+                </tr>
+                <tr>
+                    <th>Vencimento</th>
+                    <td>{{ tarefa.vencimento }}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>{{ tarefa.get_status_display }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="text-end">
+            <button type="button" class="btn btn-warning btn-sm" onclick="window.location.href='{% url 'editar-tarefa' tarefa.id %}'">
+                <i class="bi bi-pencil"></i> Editar
+            </button>
+        
+            <!-- Modal de Confirmação -->
+            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#confirmacaoModal{{ tarefa.id }}">
+                <i class="bi bi-trash"></i> Apagar
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="confirmacaoModal{{ tarefa.id }}" tabindex="-1" aria-labelledby="confirmacaoModalLabel{{ tarefa.id }}" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirmacaoModalLabel{{ tarefa.id }}">Confirmação</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Tem certeza que deseja apagar este item?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <a href="{% url 'apagar-tarefa' tarefa.id %}" class="btn btn-danger btn-sm">Apagar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Fim do Modal -->
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}{% endblock javascripts %}

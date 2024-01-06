@@ -1,0 +1,72 @@
+{% extends "conteudo/site_base.html" %}
+
+{% load static %}
+
+{% block title %} Notícias {% endblock %}
+
+{% block conteudo %}
+
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      {% for slide in slides %}
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %} class="active" aria-current="true" {% endif %}  aria-label="Slide {{ forloop.counter }}"></button>
+      {% endfor %}
+    </div>
+    <div class="carousel-inner">
+
+      {% for slide in slides %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <a href="{% url 'materia' slide.id %}">
+          <img src="{{ slide.imagem.thumb.url }}" class="d-block w-100" alt="...">
+        </a>
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="text-light">{{ slide.titulo }}</h5>
+          <p class="text-light">{{ slide.subtitulo }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <div class="row mt-5">
+
+    {% for importante in importantes %}
+      <div class="col-sm-6 mb-5">
+          <div class="card">
+              <img src="{{ importante.imagem.thumb.url }}" class="card-img-top" alt="...">
+              <div class="card-body">
+              <h5 class="card-title">{{ importante.titulo }}</h5>
+              <p class="card-text">{{ importante.subtitulo }}</p>
+              <a href="{% url 'materia' importante.id %}" class="btn btn-primary">Abrir</a>
+              </div>
+          </div>    
+      </div>
+    {% endfor %}
+  </div>
+
+<div class="row">
+  {% for materia in materias %}
+    <div class="col-sm-4 mb-5">
+        <div class="card">
+            <img src="{{ materia.imagem.thumb.url }}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">{{ materia.titulo }}</h5>
+            <p class="card-text"><span class="fw-bold">{{ materia.titulo }}</span></p>
+            <a href="{% url 'materia' materia.id %}" class="btn btn-primary">Abrir</a>
+            </div>
+        </div>    
+    </div>
+  {% endfor %}
+</div>
+
+
+{% endblock %}
