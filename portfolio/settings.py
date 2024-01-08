@@ -17,8 +17,8 @@ SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = os.environ['DEBUG']
 
 #ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['https://marciomiranda.tech']
-CSRF_TRUSTED_ORIGINS = ['https://marciomiranda.tech']
+ALLOWED_HOSTS = ['marciomiranda.tech']
+CSRF_TRUSTED_ORIGINS = ['marciomiranda.tech']
 
 
 # Application definition
